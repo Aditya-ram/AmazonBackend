@@ -1,3 +1,4 @@
+const { HomeAppliances } = require("../models/homeappliances.model");
 const { Product } = require("../models/products.model");
 
 function getProducts(req,res){
@@ -6,4 +7,12 @@ function getProducts(req,res){
         res.json({Message:"Products are here", response:response});
     })
 }
-module.exports = {getProducts}
+
+function getAppliances(req,res){
+    HomeAppliances.find({})
+    .then((response)=>{
+        console.log(response);
+        res.json({Message:"Home appliances are here", response:response});
+    })
+}
+module.exports = {getProducts,getAppliances}

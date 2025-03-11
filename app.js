@@ -5,12 +5,14 @@ var dotenv = require("dotenv");
 var cors = require('cors');
 const { Product } = require("./models/products.model");
 const { getProducts } = require("./controllers/products.controller");
-var {productsRouter} = require("./routers/router.js");
+var {productsRouter} = require("./routers/productsrouter.js");
+const { applianceRouter } = require("./routers/appliancerouter.js");
 var PORT = process.env.PORT;
 app.use(cors());
 
 dotenv.config();
 app.use("/products",productsRouter);
+app.use("/appliances",applianceRouter);
 
 app.get('/',(req,res)=>{
     res.json({message:"You are in backend"})
