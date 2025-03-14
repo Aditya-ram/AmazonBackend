@@ -7,12 +7,18 @@ const { Product } = require("./models/products.model");
 const { getProducts } = require("./controllers/products.controller");
 var {productsRouter} = require("./routers/productsrouter.js");
 const { applianceRouter } = require("./routers/appliancerouter.js");
+const { cartRouter } = require("./routers/cartRouter.js");
 var PORT = process.env.PORT;
+
+app.use(express.json());
 app.use(cors());
+
+
 
 dotenv.config();
 app.use("/products",productsRouter);
 app.use("/appliances",applianceRouter);
+app.use("/cart",cartRouter)
 
 app.get('/',(req,res)=>{
     res.json({message:"You are in backend"})

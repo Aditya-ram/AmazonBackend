@@ -1,3 +1,4 @@
+const { CartProduct } = require("../models/cart.model");
 const { HomeAppliances } = require("../models/homeappliances.model");
 const { Product } = require("../models/products.model");
 
@@ -15,4 +16,13 @@ function getAppliances(req,res){
         res.json({Message:"Home appliances are here", response:response});
     })
 }
-module.exports = {getProducts,getAppliances}
+
+function sendCartProducts(req,res){
+    console.log(req.body);
+    CartProduct.create(req.body)
+    .then(()=>{
+        console.log("Cart item is created");
+        res.json({Message:"Home appliances are here"});
+    })
+}
+module.exports = {getProducts,getAppliances, sendCartProducts}
