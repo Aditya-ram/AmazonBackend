@@ -10,7 +10,7 @@ function getProducts(req,res){
 }
 
 function getAppliances(req,res){
-    HomeAppliances.find({})
+    HomeAppliances.find({}) 
     .then((response)=>{
         console.log(response);
         res.json({Message:"Home appliances are here", response:response});
@@ -25,4 +25,23 @@ function sendCartProducts(req,res){
         res.json({Message:"Home appliances are here"});
     })
 }
-module.exports = {getProducts,getAppliances, sendCartProducts}
+
+function getFromCart(req,res){
+    console.log(req.body);
+    CartProduct.find({})
+    .then((response)=>{
+        console.log("Cart items are here");
+        res.json({Message:"Cart items are here", response:response});
+    })
+}
+function removeFromCart(req,res){
+    console.log("req body is", req.body);
+    CartProduct.deleteOne({id:req.body.id})
+    .then(()=>{
+        console.log("Cart item is removed");
+        res.json({Message:"Item is removed"});
+    })
+}
+
+
+module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart}
