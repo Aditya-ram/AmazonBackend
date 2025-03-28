@@ -43,5 +43,15 @@ function removeFromCart(req,res){
     })
 }
 
+function getSignupData(req,res){
+    console.log(req.body);
+    CartProduct.create(req.body)
+    .then(()=>{
+        console.log("Cart item is created");
+        res.json({Message:"Home appliances are here"});
+    })
+}
+
+
 
 module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart}
