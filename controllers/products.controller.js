@@ -1,6 +1,7 @@
 const { CartProduct } = require("../models/cart.model");
 const { HomeAppliances } = require("../models/homeappliances.model");
 const { Product } = require("../models/products.model");
+const { Signup } = require("../models/signup.model");
 
 function getProducts(req,res){
     Product.find({})
@@ -43,15 +44,24 @@ function removeFromCart(req,res){
     })
 }
 
+function makeSignupData(req,res){
+    console.log(req.body);
+    Signup.create(req.body)
+    .then(()=>{
+        console.log("User is added");
+        res.json({Message:"User is created", response:req.body});
+    })
+}
+
 function getSignupData(req,res){
     console.log(req.body);
-    CartProduct.create(req.body)
-    .then(()=>{
-        console.log("Cart item is created");
-        res.json({Message:"Home appliances are here"});
+    Signup.find({})
+    .then((response)=>{
+        console.log("Users are here");
+        res.json({Message:"Users are here", response:req.body});
     })
 }
 
 
 
-module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart}
+module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart,makeSignupData,getSignupData}

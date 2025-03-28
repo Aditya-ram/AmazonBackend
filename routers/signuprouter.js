@@ -1,7 +1,8 @@
 var express = require('express');
-const { getSignupData } = require('../controllers/products.controller');
+const { makeSignupData, getSignupData } = require('../controllers/products.controller');
 var signUpRouter = express.Router();
 
-signUpRouter.get('/Signup',getSignupData);
+signUpRouter.get('/getUser',getSignupData);
+signUpRouter.post('/createUser',makeSignupData);
 
 module.exports = {signUpRouter}

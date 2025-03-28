@@ -8,6 +8,7 @@ const { getProducts } = require("./controllers/products.controller");
 var {productsRouter} = require("./routers/productsrouter.js");
 const { applianceRouter } = require("./routers/appliancerouter.js");
 const { cartRouter } = require("./routers/cartRouter.js");
+const { signUpRouter } = require("./routers/signuprouter.js");
 var PORT = process.env.PORT;
 
 app.use(express.json());
@@ -19,6 +20,8 @@ dotenv.config();
 app.use("/products",productsRouter);
 app.use("/appliances",applianceRouter);
 app.use("/cart",cartRouter)
+app.use("/signup",signUpRouter)
+
 
 app.get('/',(req,res)=>{
     res.json({message:"You are in backend"})
