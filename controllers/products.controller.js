@@ -62,6 +62,23 @@ function getSignupData(req,res){
     })
 }
 
+function loginUser(req,res){
+    console.log(req.body,"req.body");
+    Signup.findOne({email:req.body.email})
+    .then((response)=>{
+        if(response == null){
+           return res.json({Message:"Enter valid Email"});
+        }
+       console.log(response, "response");
+       if(response.password == req.body.password){
+       return res.json({Message:"Users are here", response:response});
+       }
+       else{
+        return res.json({Message:"Enter valid credentials"})
+       }
+    })
+}
 
 
-module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart,makeSignupData,getSignupData}
+
+module.exports = {getProducts,getAppliances, sendCartProducts,getFromCart,removeFromCart,makeSignupData,getSignupData,loginUser}

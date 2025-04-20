@@ -9,6 +9,7 @@ var {productsRouter} = require("./routers/productsrouter.js");
 const { applianceRouter } = require("./routers/appliancerouter.js");
 const { cartRouter } = require("./routers/cartRouter.js");
 const { signUpRouter } = require("./routers/signuprouter.js");
+const { loginRouter } = require("./routers/loginRouter.js");
 var PORT = process.env.PORT;
 
 app.use(express.json());
@@ -19,8 +20,9 @@ app.use(cors());
 dotenv.config();
 app.use("/products",productsRouter);
 app.use("/appliances",applianceRouter);
-app.use("/cart",cartRouter)
-app.use("/signup",signUpRouter)
+app.use("/cart",cartRouter);
+app.use("/signup",signUpRouter);
+app.use("/login",loginRouter);
 
 
 app.get('/',(req,res)=>{
