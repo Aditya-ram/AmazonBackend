@@ -4,7 +4,7 @@ const { sendCartProducts, getFromCart, removeFromCart } = require('../controller
 var cartRouter = express.Router();
 
 cartRouter.post('/cartPost',sendCartProducts);
-cartRouter.get('/cartPost',getFromCart);
+cartRouter.post('/getCart',getFromCart);
 cartRouter.delete('/removeCart',removeFromCart);
 
 module.exports = {cartRouter}

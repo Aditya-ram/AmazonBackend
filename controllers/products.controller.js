@@ -22,16 +22,13 @@ function sendCartProducts(req,res){
     console.log(req.body);
     CartProduct.create(req.body)
     .then(()=>{
-        console.log("Cart item is created");
         res.json({Message:"Home appliances are here"});
     })
 }
 
 function getFromCart(req,res){
-    console.log(req.body);
-    CartProduct.find({})
+    CartProduct.find({username:req.body.username})
     .then((response)=>{
-        console.log("Cart items are here");
         res.json({Message:"Cart items are here", response:response});
     })
 }
